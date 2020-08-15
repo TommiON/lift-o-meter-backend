@@ -28,10 +28,12 @@
 
 (Käyttöliittymälinjaus: sarja ei varsinaisesti muokattavissa, paitsi yhdellä toistot-napilla.)
 
-`GET /sets` Seuraavaksi vuorossa olevan sarjan tiedot
+`GET /sets` 
 
 `POST /sets` Viimeksi tehdyn sarjan tallentaminen
 
-`GET /sets/{id}` 
+`GET /sets/{id}` Yksittäisen sarjan tiedot
+
+`PUT /sets/{id}` Yksittäisen sarjan toteutuneen toistomäärän muuttaminen
 
 
