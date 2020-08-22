@@ -8,4 +8,5 @@
 16.8.|Lisää frontendin hahmottelua, Reactin perusteiden kertausta Timer-komponentin parissa, mm. testit komponentille |3|
 18.8.|Backend, ensimmäisiä Entity-luokkia|2|
 20.8.|Backend, luokkakaavion ja toimintalogiikan suunnittelua ja dokumentointia, lisää Entity-luokkia|4|
-||yhteensä|19
+21.8.|Suunnitteludokumentaatiota, REST-rajapinnan ensimmäinen versio lukkoon|2|
+||yhteensä|21
