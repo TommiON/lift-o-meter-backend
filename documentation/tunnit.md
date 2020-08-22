@@ -9,4 +9,5 @@
 18.8.|Backend, ensimmäisiä Entity-luokkia|2|
 20.8.|Backend, luokkakaavion ja toimintalogiikan suunnittelua ja dokumentointia, lisää Entity-luokkia|4|
 21.8.|Suunnitteludokumentaatiota, REST-rajapinnan ensimmäinen versio lukkoon|2|
-||yhteensä|21
+22.8.|Spring-konfigurointia ja ongelmien selvittelyä, backendin rakenteen refaktorointi|3|
+||yhteensä|24
