@@ -1,8 +1,11 @@
-package entities;
+package org.tommi.back.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.domain.AbstractPersistable;
+import org.tommi.back.entities.Move;
+import org.tommi.back.entities.Workout;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -13,7 +16,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class MoveSet {
+public class MoveSet extends AbstractPersistable<Long> {
 
     @NotNull
     @ManyToOne

@@ -1,4 +1,4 @@
-package entities;
+package org.tommi.back.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,6 +12,7 @@ import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -24,7 +25,7 @@ public class Cycle extends AbstractPersistable<Long> {
     private UserAccount trainer;
 
     @OneToMany(mappedBy = "cycle")
-    private ArrayList<Workout> workouts;
+    private List<Workout> workouts;
 
     @FutureOrPresent
     private Date startDate;

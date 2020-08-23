@@ -1,4 +1,4 @@
-package entities;
+package org.tommi.back.entities;
 
 enum Move {
     SQUAT,
