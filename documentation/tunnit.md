@@ -12,4 +12,5 @@
 22.8.|Spring-konfigurointia ja ongelmien selvittelyä, backendin rakenteen refaktorointi|3|
 23.8.|Backend, lisää refaktorointia (vanha sovellus pois), UserAccountin controllerin ja servicen hahmottelua|2|
 24.8.|Frontend, käyttäjähallinnan komponenttien koodausta, mock-JSON-tietokannan perustaminen|4|
-||yhteensä|30
+27.8.|Frontend, käyttäjähallinnan komponenttien koodausta, tyylien aloittelua, yksi custom-hook (SetCounter)|6|
+||yhteensä|36
