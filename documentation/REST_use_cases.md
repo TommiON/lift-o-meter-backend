@@ -36,7 +36,7 @@
 
 (Käyttöliittymäkirjaus: voiko treenin poistaa vai ainoastaan keskeyttää? Jos jälkimmäinen, tarvitaan jonkinlainen completed-bitti)
 
-(Toiminnallinen linjaus: POST heti aluksi, sen jälkeen sarja PUTteja, jotta kantaan tallentuu jotain vaikka tulisi häiriö?)
+(Toiminnallinen linjaus: POST heti aluksi, sen jälkeen sarja PUTteja, jotta kantaan tallentuu jotain vaikka tulisi häiriö?. Siis aluksi luodaan uusi Workout, jossa ennalta määrätyt mutta vielä tyhjät MoveSetit)
 
 `POST /workouts` Uuden harjoituksen luominen
 
@@ -46,14 +46,14 @@
 
 `GET /workout/{workout_id}` Tietyn harjoituksen tarkemman tiedot    
 
-## Sarja (Set)
+## Sarja (MoveSet)
 
 (Käyttöliittymälinjaus: sarja ei varsinaisesti muokattavissa, paitsi yhdellä toistot-napilla.)
 
-`GET /workout/{workout_id}/sets` Tietyn harjoituksen kaikki sarjat (osa tai kaikki saattavat olla hakuhetkellä tyhjiä)
+`GET /workouts/{workout_id}/movesets` Tietyn harjoituksen kaikki sarjat (osa tai kaikki saattavat olla hakuhetkellä tyhjiä)
 
-`POST /workout/{workout_id}/sets` Uuden (viimeksi tehdyn) sarjan tallentaminen
+`POST /workouts/{workout_id}/movesets` Uuden (viimeksi tehdyn) sarjan tallentaminen
 
-`PUT /workout/{workout_id}/sets/{set_id}` Yksittäisen sarjan toteutuneen toistomäärän muuttaminen
+`PUT /workouts/{workout_id}/movesets/{set_id}` Yksittäisen sarjan toteutuneen toistomäärän muuttaminen
 
 
