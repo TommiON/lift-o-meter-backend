@@ -14,4 +14,6 @@
 24.8.|Frontend, käyttäjähallinnan komponenttien koodausta, mock-JSON-tietokannan perustaminen|4|
 27.8.|Frontend, käyttäjähallinnan komponenttien koodausta, tyylien aloittelua, yksi custom-hook|6|
 28.8.|Frontend, sarjojen (Moveset) komponenttien ja tietokantapalveluiden koodausta|4|
-||yhteensä|40
+30.8.|Frontend, sarjojen (Moveset) komponenttien ja tietokantapalveluiden koodaus suunnilleen valmiiksi|6|
+31.8.|Frontend, harjoituksen (Workout) komponentin ja palvelun hahmottelua, koodausta|4|
+||yhteensä|48
