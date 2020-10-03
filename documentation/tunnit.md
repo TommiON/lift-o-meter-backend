@@ -16,4 +16,5 @@
 28.8.|Frontend, sarjojen (Moveset) komponenttien ja tietokantapalveluiden koodausta|4|
 30.8.|Frontend, sarjojen (Moveset) komponenttien ja tietokantapalveluiden koodaus suunnilleen valmiiksi|6|
 31.8.|Frontend, harjoituksen (Workout) komponentin ja palvelun hahmottelua, koodausta|4|
-||yhteensä|48
+3.10.|Frontend, refaktorointia, harjoituksen (Workout) tietokantapalvelun ensimmäinen versio|3|
+||yhteensä|51

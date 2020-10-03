@@ -38,7 +38,7 @@
 
 (Toiminnallinen linjaus: POST heti aluksi, sen jälkeen sarja PUTteja, jotta kantaan tallentuu jotain vaikka tulisi häiriö?. Siis aluksi luodaan uusi Workout, jossa ennalta määrätyt mutta vielä tyhjät MoveSetit)
 
-`POST /workouts` Uuden harjoituksen luominen
+`POST /workouts` Uuden harjoituksen luominen. Front lähettää tällä tiedon backille että harjoitus alkamassa, back luo datan; näinkö tämä ehkä menisi?
 
 `PUT /workouts/{workout_id}` Harjoituksen tietojen päivittäminen
 
