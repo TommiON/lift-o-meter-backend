@@ -18,4 +18,5 @@
 31.8.|Frontend, harjoituksen (Workout) komponentin ja palvelun hahmottelua, koodausta|4|
 3.10.|Frontend, refaktorointia, harjoituksen (Workout) tietokantapalvelun ensimmäinen versio|3|
 8.10.|Frontend, tietokanpalveluiden koodausta|3
-||yhteensä|54
+10.10.|Frontend ja backend, ensimmäinen kokonainen REST-polku frontista tietokantaan (UserAccount)|4
+||yhteensä|60

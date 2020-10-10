@@ -7,6 +7,7 @@ import org.tommi.back.entities.UserAccount;
 import org.tommi.back.repositories.UserAccountRepository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UserAccountService {
@@ -14,27 +15,15 @@ public class UserAccountService {
     @Autowired
     private UserAccountRepository userAccountRepository;
 
-    public void addUser(ArrayList<Cycle> cycles,
-                        String name,
-                        boolean admin,
-                        int age,
-                        double weight,
-                        double height,
-                        double bestSquat,
-                        double bestBenchPress,
-                        double bestBarbellRow,
-                        double bestOverheadPress,
-                        double bestDeadlift) throws Exception {
-        UserAccount user = new UserAccount(cycles, name, admin, age, weight, height, bestSquat, bestBenchPress, bestBarbellRow, bestOverheadPress, bestDeadlift);
-        userAccountRepository.save(user);
+    public List<UserAccount> getUsers() throws Exception {
+        return userAccountRepository.findAll();
     }
 
-    public String getUsers() throws Exception {
-        ArrayList<UserAccount> users = new ArrayList<>(userAccountRepository.findAll());
-        String usersAsString = "";
-        for (UserAccount user: users) {
-            usersAsString = usersAsString + user.getId() + ": " + user.toString() + System.lineSeparator();
-        }
-        return usersAsString;
+    public UserAccount createUser(UserAccount userAccount) throws Exception {
+        return userAccountRepository.save(userAccount);
+    }
+
+    public void deleteUser(Long id) throws Exception {
+        userAccountRepository.deleteById(id);
     }
 }

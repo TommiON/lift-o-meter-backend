@@ -7,6 +7,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,42 +22,42 @@ public class UserAccount extends AbstractPersistable<Long> {
     @OneToMany(mappedBy="trainer")
     private List<Cycle> cycles;
 
-    @NotEmpty(message = "Käyttäjänimi pitää olla")
-    @Size(min = 3, message = "Käyttäjänimessä pitää olla vähintään 3 merkkiä")
-    @Size(max = 40, message = "Käyttäjänimessä saa olla enintään 40")
+    // @NotEmpty(message = "Käyttäjänimi pitää olla")
+    // @Size(min = 3, message = "Käyttäjänimessä pitää olla vähintään 3 merkkiä")
+    // @Size(max = 40, message = "Käyttäjänimessä saa olla enintään 40")
     private String name;
 
     private boolean admin;
 
-    @Min(value = 12, message = "Ei alle 12-vuotiaita")
-    @Max(value = 100, message = "Ei yli 100-vuotiaita")
+    // @Min(value = 12, message = "Ei alle 12-vuotiaita")
+    // @Max(value = 100, message = "Ei yli 100-vuotiaita")
     private int age;
 
-    @Min(value = 40)
-    @Max(value = 150)
+    // @Min(value = 40)
+    // @Max(value = 150)
     private double weigth;
 
-    @Min(value = 140)
-    @Max(value = 220)
+    // @Min(value = 140)
+    // @Max(value = 220)
     private double heigth;
 
-    @Min(value = 20)
-    @Max(value = 300)
+    // @Min(value = 20)
+    // @Max(value = 300)
     private double bestSquat;
 
-    @Min(value = 20)
-    @Max(value = 200)
+    // @Min(value = 20)
+    // @Max(value = 200)
     private double bestBenchPress;
 
-    @Min(value = 20)
-    @Max(value = 200)
+    // @Min(value = 20)
+    // @Max(value = 200)
     private double bestBarbellRow;
 
-    @Min(value = 20)
-    @Max(value = 150)
+    // @Min(value = 20)
+    // @Max(value = 150)
     private double bestOverheadPress;
 
-    @Min(value = 20)
-    @Max(value = 300)
+    // @Min(value = 20)
+    // @Max(value = 300)
     private double bestDeadlift;
 }
