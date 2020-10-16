@@ -19,15 +19,17 @@ import javax.validation.constraints.*;
 @Data
 public class UserAccount extends AbstractPersistable<Long> {
 
-    @OneToMany(mappedBy="trainer")
-    private List<Cycle> cycles;
-
     // @NotEmpty(message = "Käyttäjänimi pitää olla")
     // @Size(min = 3, message = "Käyttäjänimessä pitää olla vähintään 3 merkkiä")
     // @Size(max = 40, message = "Käyttäjänimessä saa olla enintään 40")
     private String name;
 
+    private String password;
+
     private boolean admin;
+
+    @OneToMany(mappedBy="trainer")
+    private List<Cycle> cycles;
 
     // @Min(value = 12, message = "Ei alle 12-vuotiaita")
     // @Max(value = 100, message = "Ei yli 100-vuotiaita")
