@@ -3,10 +3,12 @@ package org.tommi.back.controllers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.tommi.back.entities.UserAccount;
 import org.tommi.back.services.UserAccountService;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +20,11 @@ public class UserAccountController {
 
     @Autowired
     private ObjectMapper mapper;
+
+    @GetMapping("/current_user")
+    public String getCurrentUser(Principal principal) {
+        return principal.getName();
+    }
 
     @GetMapping(value = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<UserAccount> getUsers() {
