@@ -20,4 +20,6 @@
 8.10.|Frontend, tietokanpalveluiden koodausta|3
 10.10.|Frontend ja backend, ensimmäinen kokonainen REST-polku frontista tietokantaan (UserAccount)|4
 17.10.|Backend, kirjautumistoiminnallisuuden ensimmäisiä askelia|2
-||yhteensä|62
+22.10.|Backend, kirjautumistoiminnallisuuden implementointia|6
+23.10.|Backend, kirjautumistoiminnallisuuden implementointia ja debuggausta|8
+||yhteensä|76

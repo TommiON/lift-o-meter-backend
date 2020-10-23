@@ -5,13 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import java.io.Serializable;
-import java.util.ArrayList;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import java.util.HashSet;
 import java.util.List;
-
-import javax.validation.constraints.*;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -19,14 +17,18 @@ import javax.validation.constraints.*;
 @Data
 public class UserAccount extends AbstractPersistable<Long> {
 
-    // @NotEmpty(message = "Käyttäjänimi pitää olla")
+    @NotBlank
     // @Size(min = 3, message = "Käyttäjänimessä pitää olla vähintään 3 merkkiä")
     // @Size(max = 40, message = "Käyttäjänimessä saa olla enintään 40")
-    private String name;
+    private String username;
 
+    @NotBlank
     private String password;
 
-    private boolean admin;
+    // private boolean admin;
+
+    @ManyToMany(cascade= CascadeType.PERSIST, fetch = FetchType.LAZY)
+    private Set<UserRole> roles = new HashSet<>();
 
     @OneToMany(mappedBy="trainer")
     private List<Cycle> cycles;
@@ -62,4 +64,22 @@ public class UserAccount extends AbstractPersistable<Long> {
     // @Min(value = 20)
     // @Max(value = 300)
     private double bestDeadlift;
+
+    public UserAccount(String username, String password) {
+        this.username = username;
+        this.password = password;
+
+        UserRole role = new UserRole(RoleEnum.ROLE_ADMIN);
+        this.roles = new HashSet<>();
+        this.roles.add(role);
+
+        this.age = 0;
+        this.bestBarbellRow = 0;
+        this.bestBenchPress = 0;
+        this.bestDeadlift = 0;
+        this.bestOverheadPress = 0;
+        this.bestSquat = 0;
+        this.heigth = 0;
+        this.weigth = 0;
+    }
 }
