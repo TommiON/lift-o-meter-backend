@@ -36,7 +36,7 @@ public class AuthController {
     @Autowired
     JwtUtils jwtUtils;
 
-    @PostMapping("/signin")
+    @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
@@ -56,7 +56,7 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
+    public ResponseEntity<?> registerUser(@RequestBody SignupRequest signUpRequest) {
         if(userAccountRepository.existsByUsername(signUpRequest.getUsername())) {
             return ResponseEntity
                     .badRequest()
@@ -65,10 +65,19 @@ public class AuthController {
 
         UserAccount user = new UserAccount(
                 signUpRequest.getUsername(),
-                passwordEncoder.encode(signUpRequest.getPassword()));
+                passwordEncoder.encode(signUpRequest.getPassword()),
+                signUpRequest.getAge(),
+                signUpRequest.getHeigth(),
+                signUpRequest.getWeigth(),
+                signUpRequest.getBestBarbellRow(),
+                signUpRequest.getBestBenchPress(),
+                signUpRequest.getBestDeadlift(),
+                signUpRequest.getBestOverheadPress(),
+                signUpRequest.getBestSquat()
+        );
 
         userAccountRepository.save(user);
 
-        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+        return ResponseEntity.ok(new MessageResponse("Uusi käyttäjätunnus lisätty!"));
     }
 }

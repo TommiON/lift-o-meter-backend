@@ -1,9 +1,15 @@
 package org.tommi.back.security;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.validation.constraints.*;
 import java.util.Set;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class SignupRequest {
     @NotBlank
     @Size(min = 3, max = 20)
@@ -15,27 +21,43 @@ public class SignupRequest {
     @Size(min = 6, max = 40)
     private String password;
 
-    public String getUsername() {
-        return username;
-    }
+    @NotNull
+    @Min(14)
+    @Max(100)
+    private int age;
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    @NotNull
+    @Min(value = 40)
+    @Max(value = 150)
+    private double weigth;
 
-    public String getPassword() {
-        return password;
-    }
+    @NotNull
+    @Min(value = 140)
+    @Max(value = 220)
+    private double heigth;
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    @NotNull
+    @Min(value = 20)
+    @Max(value = 300)
+    private double bestSquat;
 
-    public Set<String> getRole() {
-        return this.role;
-    }
+    @NotNull
+    @Min(value = 20)
+    @Max(value = 200)
+    private double bestBenchPress;
 
-    public void setRole(Set<String> role) {
-        this.role = role;
-    }
+    @NotNull
+    @Min(value = 20)
+    @Max(value = 200)
+    private double bestBarbellRow;
+
+    @NotNull
+    @Min(value = 20)
+    @Max(value = 150)
+    private double bestOverheadPress;
+
+    @NotNull
+    @Min(value = 20)
+    @Max(value = 300)
+    private double bestDeadlift;
 }

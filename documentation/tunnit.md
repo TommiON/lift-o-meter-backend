@@ -22,4 +22,5 @@
 17.10.|Backend, kirjautumistoiminnallisuuden ensimmäisiä askelia|2
 22.10.|Backend, kirjautumistoiminnallisuuden implementointia|6
 23.10.|Backend, kirjautumistoiminnallisuuden implementointia ja debuggausta|8
-||yhteensä|76
+24.10.|Frontend, kirjautumistoiminnallisuuden aloitus|6
+||yhteensä|82
