@@ -66,9 +66,6 @@ public class AuthController {
         UserAccount user = new UserAccount(
                 signUpRequest.getUsername(),
                 passwordEncoder.encode(signUpRequest.getPassword()),
-                signUpRequest.getAge(),
-                signUpRequest.getHeigth(),
-                signUpRequest.getWeigth(),
                 signUpRequest.getBestBarbellRow(),
                 signUpRequest.getBestBenchPress(),
                 signUpRequest.getBestDeadlift(),

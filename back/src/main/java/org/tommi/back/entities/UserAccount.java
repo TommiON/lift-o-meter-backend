@@ -29,12 +29,6 @@ public class UserAccount extends AbstractPersistable<Long> {
     @OneToMany(mappedBy="trainer")
     private List<Cycle> cycles;
 
-    private int age;
-
-    private double weigth;
-
-    private double heigth;
-
     private double bestSquat;
 
     private double bestBenchPress;
@@ -47,9 +41,6 @@ public class UserAccount extends AbstractPersistable<Long> {
 
     public UserAccount(String username,
                        String password,
-                       int age,
-                       double heigth,
-                       double weigth,
                        double bestBarbellRow,
                        double bestBenchPress,
                        double bestDeadlift,
@@ -62,13 +53,10 @@ public class UserAccount extends AbstractPersistable<Long> {
         this.roles = new HashSet<>();
         this.roles.add(role);
 
-        this.age = age;
         this.bestBarbellRow = bestBarbellRow;
         this.bestBenchPress = bestBenchPress;
         this.bestDeadlift = bestDeadlift;
         this.bestOverheadPress = bestOverheadPress;
         this.bestSquat = bestSquat;
-        this.heigth = heigth;
-        this.weigth = weigth;
     }
 }
