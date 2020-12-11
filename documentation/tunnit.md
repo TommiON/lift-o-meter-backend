@@ -24,4 +24,5 @@
 23.10.|Backend, kirjautumistoiminnallisuuden implementointia ja debuggausta|8
 24.10.|Frontend, kirjautumistoiminnallisuuden aloitus|6
 25.10.|Frontend, kirjautumistoiminnallisuutta eteenpäin. Backend, tietokannan refaktorointia (UserAccountista tarpeettomia kenttiä pois)|6
-||yhteensä|88
+11.12|Paluu projektiin tauon jälkeen. Backend ja frontend, kirjautumistoiminnallisuuden ja käyttäjähallinnan koodausta. Ensimmäiset backend-testit ja pari uutta apuluokkaa.|8
+||yhteensä|96

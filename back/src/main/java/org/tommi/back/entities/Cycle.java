@@ -22,7 +22,7 @@ public class Cycle extends AbstractPersistable<Long> {
 
     @NotNull
     @ManyToOne
-    private UserAccount trainer;
+    private UserAccount owner;
 
     @OneToMany(mappedBy = "cycle")
     private List<Workout> workouts;
@@ -35,4 +35,10 @@ public class Cycle extends AbstractPersistable<Long> {
 
     @NotNull
     private boolean active;
+
+    private double squatStartWeight;
+    private double deadliftStartWeigth;
+    private double benchPressStartWeight;
+    private double barbellRowStartWeigth;
+    private double overheadPressStartWeight;
 }

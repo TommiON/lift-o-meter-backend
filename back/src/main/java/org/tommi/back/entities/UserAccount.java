@@ -26,7 +26,7 @@ public class UserAccount extends AbstractPersistable<Long> {
     @ManyToMany(cascade= CascadeType.PERSIST, fetch = FetchType.LAZY)
     private Set<UserRole> roles = new HashSet<>();
 
-    @OneToMany(mappedBy="trainer")
+    @OneToMany(mappedBy="owner")
     private List<Cycle> cycles;
 
     private double bestSquat;
