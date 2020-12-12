@@ -8,6 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.tommi.back.domain.UserFactory;
 import org.tommi.back.entities.UserAccount;
 import org.tommi.back.repositories.UserAccountRepository;
 import org.tommi.back.repositories.UserRoleRepository;
@@ -25,16 +26,13 @@ public class AuthController {
     AuthenticationManager authenticationManager;
 
     @Autowired
-    UserAccountRepository userAccountRepository;
-
-    @Autowired
-    UserRoleRepository userRoleRepository;
-
-    @Autowired
     PasswordEncoder passwordEncoder;
 
     @Autowired
     JwtUtils jwtUtils;
+
+    @Autowired
+    UserFactory userFactory;
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -57,13 +55,13 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@RequestBody SignupRequest signUpRequest) {
-        if(userAccountRepository.existsByUsername(signUpRequest.getUsername())) {
+        if(userFactory.usernameAlreadyTaken(signUpRequest.getUsername())) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Virhe: käyttäjänimi on jo varattu!"));
         }
 
-        UserAccount user = new UserAccount(
+        userFactory.build(
                 signUpRequest.getUsername(),
                 passwordEncoder.encode(signUpRequest.getPassword()),
                 signUpRequest.getBestBarbellRow(),
@@ -72,8 +70,6 @@ public class AuthController {
                 signUpRequest.getBestOverheadPress(),
                 signUpRequest.getBestSquat()
         );
-
-        userAccountRepository.save(user);
 
         return ResponseEntity.ok(new MessageResponse("Uusi käyttäjätunnus lisätty!"));
     }

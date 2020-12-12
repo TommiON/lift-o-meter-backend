@@ -7,6 +7,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -23,10 +24,10 @@ public class UserAccount extends AbstractPersistable<Long> {
     @NotBlank
     private String password;
 
-    @ManyToMany(cascade= CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private Set<UserRole> roles = new HashSet<>();
 
-    @OneToMany(mappedBy="owner")
+    @OneToMany(mappedBy="owner", cascade = CascadeType.ALL)
     private List<Cycle> cycles;
 
     private double bestSquat;
@@ -58,5 +59,12 @@ public class UserAccount extends AbstractPersistable<Long> {
         this.bestDeadlift = bestDeadlift;
         this.bestOverheadPress = bestOverheadPress;
         this.bestSquat = bestSquat;
+    }
+
+    public void addCycle(Cycle cycle) {
+        if(this.cycles == null) {
+            this.cycles = new ArrayList<>();
+        }
+        this.cycles.add(cycle);
     }
 }

@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -20,20 +21,14 @@ import java.util.List;
 @Data
 public class Cycle extends AbstractPersistable<Long> {
 
-    @NotNull
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private UserAccount owner;
 
     @OneToMany(mappedBy = "cycle")
     private List<Workout> workouts;
 
-    @FutureOrPresent
     private Date startDate;
-
-    @FutureOrPresent
     private Date endDate;
-
-    @NotNull
     private boolean active;
 
     private double squatStartWeight;
@@ -41,4 +36,27 @@ public class Cycle extends AbstractPersistable<Long> {
     private double benchPressStartWeight;
     private double barbellRowStartWeigth;
     private double overheadPressStartWeight;
+
+    /*
+    public Cycle(
+            UserAccount owner,
+            double squatStartWeight,
+            double deadliftStartWeigth,
+            double benchPressStartWeight,
+            double barbellRowStartWeigth,
+            double overheadPressStartWeight
+    ) {
+        this.owner = owner;
+        this.squatStartWeight = squatStartWeight;
+        this.deadliftStartWeigth = deadliftStartWeigth;
+        this.benchPressStartWeight = benchPressStartWeight;
+        this.barbellRowStartWeigth = barbellRowStartWeigth;
+        this.overheadPressStartWeight = overheadPressStartWeight;
+        this.workouts = new ArrayList<>();
+        this.startDate = new Date();
+        this.endDate = null;
+        this.active = true;
+    }
+
+     */
 }

@@ -32,6 +32,7 @@ public class UserAccountController {
         return current.getUsername();
     }
 
+    // Ongelma: ei osaa tehdä json:aa kun cyclet mukana
     @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<UserAccount> getUsers() {
         List<UserAccount> users = new ArrayList<>();
