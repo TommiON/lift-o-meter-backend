@@ -1,5 +1,6 @@
 package org.tommi.back.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,9 +25,11 @@ public class UserAccount extends AbstractPersistable<Long> {
     @NotBlank
     private String password;
 
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private Set<UserRole> roles = new HashSet<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy="owner", cascade = CascadeType.ALL)
     private List<Cycle> cycles;
 
