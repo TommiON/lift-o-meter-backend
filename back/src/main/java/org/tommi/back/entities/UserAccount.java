@@ -22,6 +22,7 @@ public class UserAccount extends AbstractPersistable<Long> {
     @NotBlank
     private String username;
 
+    @JsonIgnore
     @NotBlank
     private String password;
 
@@ -30,8 +31,10 @@ public class UserAccount extends AbstractPersistable<Long> {
     private Set<UserRole> roles = new HashSet<>();
 
     @JsonIgnore
-    @OneToMany(mappedBy="owner", cascade = CascadeType.ALL)
-    private List<Cycle> cycles;
+    @OneToOne(mappedBy="owner", cascade = CascadeType.ALL)
+    private Cycle activeCycle;
+
+    // lisää kenttä arkistoiduille cycleille
 
     private double bestSquat;
 
@@ -65,9 +68,6 @@ public class UserAccount extends AbstractPersistable<Long> {
     }
 
     public void addCycle(Cycle cycle) {
-        if(this.cycles == null) {
-            this.cycles = new ArrayList<>();
-        }
-        this.cycles.add(cycle);
+        this.activeCycle = cycle;
     }
 }

@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.tommi.back.entities.Cycle;
 import org.tommi.back.entities.UserAccount;
 import org.tommi.back.repositories.CycleRepository;
-import org.tommi.back.utils.CurrentUser;
+import org.tommi.back.services.CurrentUser;
+
+import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/api/cycle")
@@ -24,10 +26,7 @@ public class CycleController {
 
     @GetMapping(value = "/current", produces = MediaType.APPLICATION_JSON_VALUE)
     public Cycle getCurrent() {
-        // Long ownerId = currentUser.get().getId();
         UserAccount owner = currentUser.get();
-        // return ownerId;
         return cycleRepository.findByOwner(owner);
     }
-
 }

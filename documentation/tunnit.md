@@ -27,4 +27,5 @@
 11.12|Paluu projektiin tauon jälkeen. Backend ja frontend, kirjautumistoiminnallisuuden ja käyttäjähallinnan koodausta. Ensimmäiset backend-testit ja pari uutta apuluokkaa.|8
 12.12.|Backend, uusiin käyttäjiin ja treeniohjelmiinn liittyvien luokkien koodausta, lähinnä CycleFactory. Frontend, pientä säätöä|4
 15.12.|Backend, treeniohjelman REST-rajapinnan aloittaminen (CycleController)|2
-||yhteensä|102
+17.12.|Backend, treeniohjelman ja käyttäjätunnuksen REST-rajapinnan edistämistä. Frontend, pientä muokkausta käyttäjäprofiilin näyttämiseen.|4
+||yhteensä|106

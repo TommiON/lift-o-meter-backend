@@ -4,17 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.tommi.back.entities.Cycle;
 import org.tommi.back.entities.UserAccount;
-import org.tommi.back.entities.Workout;
 import org.tommi.back.repositories.CycleRepository;
-import org.tommi.back.utils.CurrentUser;
-import org.tommi.back.utils.WeightRounder;
+import org.tommi.back.services.WeightRounder;
 
-import javax.persistence.CascadeType;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Component
 public class CycleFactory {

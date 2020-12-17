@@ -1,4 +1,4 @@
-package org.tommi.back.utils;
+package org.tommi.back.services;
 
 public class WeightRounder {
 

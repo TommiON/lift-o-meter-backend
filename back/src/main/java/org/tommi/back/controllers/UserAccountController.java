@@ -6,7 +6,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.tommi.back.entities.UserAccount;
 import org.tommi.back.repositories.UserAccountRepository;
-import org.tommi.back.utils.CurrentUser;
+import org.tommi.back.services.CurrentUser;
 
 import java.security.Principal;
 import java.util.ArrayList;
@@ -25,11 +25,9 @@ public class UserAccountController {
     @Autowired
     private CurrentUser currentUser;
 
-    // Muunna siten että palauttaa UserAccountin
-    @GetMapping("/current_user")
-    public String getCurrentUser(Principal principal) {
-        UserAccount current = currentUser.get();
-        return current.getUsername();
+    @GetMapping(value = "/current_user", produces = MediaType.APPLICATION_JSON_VALUE)
+    public UserAccount getCurrentUser(Principal principal) {
+        return currentUser.get();
     }
 
     // Ongelma: ei osaa tehdä json:aa kun cyclet mukana
