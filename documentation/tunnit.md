@@ -28,4 +28,7 @@
 12.12.|Backend, uusiin käyttäjiin ja treeniohjelmiinn liittyvien luokkien koodausta, lähinnä CycleFactory. Frontend, pientä säätöä|4
 15.12.|Backend, treeniohjelman REST-rajapinnan aloittaminen (CycleController)|2
 17.12.|Backend, treeniohjelman ja käyttäjätunnuksen REST-rajapinnan edistämistä. Frontend, pientä muokkausta käyttäjäprofiilin näyttämiseen.|4
-||yhteensä|106
+18.12.|Backend, harjoituksia (Workout) ja sarjoja (Moveset) generoivien luokkien aloitus, WorkoutControllerin aloitus|4
+19.12.|Frontend, debuggausta (Workout-komponentti ja WorkoutService)|6
+20.12.|Frontend, Workout- ja MoveSet-komponenttien koodausta. Backend, MoveSetController-luokka alulle|8
+||yhteensä|124

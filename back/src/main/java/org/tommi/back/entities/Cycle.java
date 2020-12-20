@@ -1,5 +1,6 @@
 package org.tommi.back.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,7 +22,8 @@ public class Cycle extends AbstractPersistable<Long> {
     @OneToOne(cascade = CascadeType.ALL)
     private UserAccount owner;
 
-    @OneToMany(mappedBy = "cycle")
+    @JsonIgnore
+    @OneToMany(mappedBy = "cycle", cascade = CascadeType.ALL)
     private List<Workout> workouts;
 
     private Date startDate;
@@ -33,27 +35,4 @@ public class Cycle extends AbstractPersistable<Long> {
     private double benchPressStartWeight;
     private double barbellRowStartWeigth;
     private double overheadPressStartWeight;
-
-    /*
-    public Cycle(
-            UserAccount owner,
-            double squatStartWeight,
-            double deadliftStartWeigth,
-            double benchPressStartWeight,
-            double barbellRowStartWeigth,
-            double overheadPressStartWeight
-    ) {
-        this.owner = owner;
-        this.squatStartWeight = squatStartWeight;
-        this.deadliftStartWeigth = deadliftStartWeigth;
-        this.benchPressStartWeight = benchPressStartWeight;
-        this.barbellRowStartWeigth = barbellRowStartWeigth;
-        this.overheadPressStartWeight = overheadPressStartWeight;
-        this.workouts = new ArrayList<>();
-        this.startDate = new Date();
-        this.endDate = null;
-        this.active = true;
-    }
-
-     */
 }

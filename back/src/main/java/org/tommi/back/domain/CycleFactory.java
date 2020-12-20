@@ -16,6 +16,9 @@ public class CycleFactory {
     @Autowired
     CycleRepository cycleRepository;
 
+    @Autowired
+    WorkoutFactory workoutFactory;
+
     public Cycle build(UserAccount owner, double squat, double deadlift, double bench, double row, double overhead) {
 
         double startSquat       = Math.max((WeightRounder.roundDownToNearest2_5(squat / 2)),    20);
@@ -40,8 +43,8 @@ public class CycleFactory {
                 startRow,
                 startOverhead);
 
-        cycleRepository.save(cycle);
+        workoutFactory.buildInitial(cycle, startSquat, startBench, startRow, startOverhead, startDeadlift);
 
-        return cycle;
+        return cycleRepository.save(cycle);
     }
 }

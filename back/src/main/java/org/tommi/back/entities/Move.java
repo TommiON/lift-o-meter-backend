@@ -1,9 +1,9 @@
 package org.tommi.back.entities;
 
-enum Move {
+public enum Move {
     SQUAT,
     BENCHPRESS,
     BARBELLROW,
     OVERHEADPRESS,
-    DEADLIFT;
+    DEADLIFT
 }

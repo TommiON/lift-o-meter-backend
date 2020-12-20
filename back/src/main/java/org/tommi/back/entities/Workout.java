@@ -1,10 +1,12 @@
 package org.tommi.back.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -19,15 +21,15 @@ import java.util.List;
 @Data
 public class Workout extends AbstractPersistable<Long> {
 
-    @NotNull
-    @ManyToOne
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL)
     private Cycle cycle;
 
-    // konstruktori hoitaa populoimisen, saa parametrina edellisen Workoutin ja päättelee siitä seuraavan?
-    @OneToMany(mappedBy = "workout")
+    String type;
+
+    @OneToMany(mappedBy = "workout", cascade = CascadeType.ALL)
     private List<MoveSet> sets;
 
-    @NotNull
     private Date date;
 
 }
