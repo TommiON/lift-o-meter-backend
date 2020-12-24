@@ -31,4 +31,6 @@
 18.12.|Backend, harjoituksia (Workout) ja sarjoja (Moveset) generoivien luokkien aloitus, WorkoutControllerin aloitus|4
 19.12.|Frontend, debuggausta (Workout-komponentti ja WorkoutService)|6
 20.12.|Frontend, Workout- ja MoveSet-komponenttien koodausta. Backend, MoveSetController-luokka alulle|8
-||yhteensä|124
+22.12|Frontend ja backend, MoveSetControllerin ja ActiveMoveSet-komponentin debuggausta. FrontEndiin pieniä muutoksia eri komponentteihin|6
+23.12.|Frontend ja backend, MoveSetControllerin ja ActiveMoveSet-komponentin ratkaisu ja toteutus|4
+||yhteensä|134

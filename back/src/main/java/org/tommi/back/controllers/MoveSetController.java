@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.tommi.back.entities.MoveSet;
+import org.tommi.back.payloads.MoveSetPayload;
 import org.tommi.back.repositories.MoveSetRepository;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -16,8 +17,9 @@ public class MoveSetController {
 
     // epästabiili, pitää miettiä optionalit ja poikkeukset
     @PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public MoveSet updateSet(@RequestBody int newReps, @PathVariable Long id) {
+    public MoveSet updateSet(@RequestBody MoveSetPayload changedSet, @PathVariable Long id) {
         MoveSet moveSet = moveSetRepository.findById(id).get();
+        int newReps = changedSet.getNewRepetitions();
         moveSet.setRepetitions(newReps);
         return moveSetRepository.save(moveSet);
     }
