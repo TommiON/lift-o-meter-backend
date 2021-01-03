@@ -45,8 +45,16 @@ public class WorkoutController {
         return workouts.get(workouts.size() - 1);
     }
 
-    // 2 x POST: treenin aloittaminen, lopettaminen (jälkimmäisen yhteydessä luodaan seuraava)
-    // vai riittääkö kuitenkin jälkimmäinen, ehkä ensimmäisen voi toteuttaa kokonaan frontissa?
-    // tarvitaan varmaan myös eka: palauttaa työn alla olevan harjoituksen id:n?
-    // ei tarvitsekaan, id:n saa frontissa selville {data.id}
+    @GetMapping(value = "/reset/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Workout reset(@PathVariable Long id) {
+        Workout workout = workoutRepository.getOne(id);
+
+        for (MoveSet m : workout.getSets()) {
+            m.setRepetitions(-1);
+        }
+        workout.setDate(null);
+
+        return workoutRepository.save(workout);
+    }
+
 }
