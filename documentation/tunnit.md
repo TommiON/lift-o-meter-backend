@@ -2,7 +2,7 @@
 
 |Päivä|Työ|Tunnit|
 ---|---|---|
-14.8.2020|Frontendin ja backendin perusrunko, repositorion luominen|2|
+**14.8.2020**|Frontendin ja backendin perusrunko, repositorion luominen|2|
 15.8.|Springin ja Reactin konfigurointia. Suunnitteludokumentaatiota (REST-rajapinta)|4|
 15.8.|Frontendin hahmottelua, Reactin perusteiden kertausta Timer-komponentin parissa|4|
 16.8.|Lisää frontendin hahmottelua, Reactin perusteiden kertausta Timer-komponentin parissa, mm. testit komponentille |3|
@@ -33,7 +33,7 @@
 20.12.|Frontend, Workout- ja MoveSet-komponenttien koodausta. Backend, MoveSetController-luokka alulle|8
 22.12|Frontend ja backend, MoveSetControllerin ja ActiveMoveSet-komponentin debuggausta. FrontEndiin pieniä muutoksia eri komponentteihin|6
 23.12.|Frontend ja backend, MoveSetControllerin ja ActiveMoveSet-komponentin ratkaisu ja toteutus|4
-2.1.2021|Frontend ja backend, harjoituksen resetointitoiminnon debuggausta, staten siirtäminen kokonaan Workout-komponenttiin|8
+**2.1.2021**|Frontend ja backend, harjoituksen resetointitoiminnon debuggausta, staten siirtäminen kokonaan Workout-komponenttiin|8
 3.1.|Frontend, edellisen jatkoa|2
 4.1.|Frontend ja backend, Workoutin käynnistystoiminto|1
 ||yhteensä|145
