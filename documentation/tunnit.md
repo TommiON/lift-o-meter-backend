@@ -16,7 +16,7 @@
 28.8.|Frontend, sarjojen (Moveset) komponenttien ja tietokantapalveluiden koodausta|4|
 30.8.|Frontend, sarjojen (Moveset) komponenttien ja tietokantapalveluiden koodaus suunnilleen valmiiksi|6|
 31.8.|Frontend, harjoituksen (Workout) komponentin ja palvelun hahmottelua, koodausta|4|
-3.10.|Frontend, refaktorointia, harjoituksen (Workout) tietokantapalvelun ensimmäinen versio|3|
+**3.10.**|Frontend, refaktorointia, harjoituksen (Workout) tietokantapalvelun ensimmäinen versio|3|
 8.10.|Frontend, tietokanpalveluiden koodausta|3
 10.10.|Frontend ja backend, ensimmäinen kokonainen REST-polku frontista tietokantaan (UserAccount)|4
 17.10.|Backend, kirjautumistoiminnallisuuden ensimmäisiä askelia|2
@@ -24,7 +24,7 @@
 23.10.|Backend, kirjautumistoiminnallisuuden implementointia ja debuggausta|8
 24.10.|Frontend, kirjautumistoiminnallisuuden aloitus|6
 25.10.|Frontend, kirjautumistoiminnallisuutta eteenpäin. Backend, tietokannan refaktorointia (UserAccountista tarpeettomia kenttiä pois)|6
-11.12|Paluu projektiin tauon jälkeen. Backend ja frontend, kirjautumistoiminnallisuuden ja käyttäjähallinnan koodausta. Ensimmäiset backend-testit ja pari uutta apuluokkaa.|8
+**11.12**|Paluu projektiin tauon jälkeen. Backend ja frontend, kirjautumistoiminnallisuuden ja käyttäjähallinnan koodausta. Ensimmäiset backend-testit ja pari uutta apuluokkaa.|8
 12.12.|Backend, uusiin käyttäjiin ja treeniohjelmiinn liittyvien luokkien koodausta, lähinnä CycleFactory. Frontend, pientä säätöä|4
 15.12.|Backend, treeniohjelman REST-rajapinnan aloittaminen (CycleController)|2
 17.12.|Backend, treeniohjelman ja käyttäjätunnuksen REST-rajapinnan edistämistä. Frontend, pientä muokkausta käyttäjäprofiilin näyttämiseen.|4
