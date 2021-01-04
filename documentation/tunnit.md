@@ -35,4 +35,5 @@
 23.12.|Frontend ja backend, MoveSetControllerin ja ActiveMoveSet-komponentin ratkaisu ja toteutus|4
 2.1.2021|Frontend ja backend, harjoituksen resetointitoiminnon debuggausta, staten siirtäminen kokonaan Workout-komponenttiin|8
 3.1.|Frontend, edellisen jatkoa|2
-||yhteensä|144
+4.1.|Frontend ja backend, Workoutin käynnistystoiminto|1
+||yhteensä|145

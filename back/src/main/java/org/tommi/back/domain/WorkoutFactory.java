@@ -20,7 +20,7 @@ public class WorkoutFactory {
     private MoveSetFactory moveSetFactory;
 
     public Workout buildInitial(Cycle cycle, double squat, double bench, double row, double overhead, double deadlift) {
-        Date date = new Date();
+        Date date = null;
         Workout w = new Workout(cycle, "A", new ArrayList<>(), date);
 
         ArrayList<MoveSet> moveSets = new ArrayList<>();

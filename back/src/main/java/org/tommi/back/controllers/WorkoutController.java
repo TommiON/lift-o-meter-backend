@@ -45,6 +45,14 @@ public class WorkoutController {
         return workouts.get(workouts.size() - 1);
     }
 
+    @GetMapping(value = "/start/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Workout start(@PathVariable Long id) {
+        Workout workout = workoutRepository.getOne(id);
+        workout.setDate(new Date());
+
+        return workoutRepository.save(workout);
+    }
+
     @GetMapping(value = "/reset/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Workout reset(@PathVariable Long id) {
         Workout workout = workoutRepository.getOne(id);
