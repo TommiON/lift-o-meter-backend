@@ -21,17 +21,25 @@ public class WorkoutFactory {
 
     public Workout buildInitial(Cycle cycle, double squat, double bench, double row, double overhead, double deadlift) {
         Date date = null;
-        Workout w = new Workout(cycle, "A", new ArrayList<>(), date);
+        Workout workout = new Workout(cycle, "A", new ArrayList<>(), date);
 
         ArrayList<MoveSet> moveSets = new ArrayList<>();
         for(int i = 1; i <= 5; i++) {
-            MoveSet m = moveSetFactory.build(w, "SQUAT", squat);
-            moveSets.add(m);
+            MoveSet moveSet = moveSetFactory.build(workout, "SQUAT", squat);
+            moveSets.add(moveSet);
+        }
+        for(int i = 1; i <= 5; i++) {
+            MoveSet moveSet = moveSetFactory.build(workout, "BENCH", bench);
+            moveSets.add(moveSet);
+        }
+        for(int i = 1; i <= 5; i++) {
+            MoveSet moveSet = moveSetFactory.build(workout, "ROW", row);
+            moveSets.add(moveSet);
         }
 
-        return workoutRepository.save(w);
+        workout.setSets(moveSets);
 
-
+        return workoutRepository.save(workout);
     }
 
 }

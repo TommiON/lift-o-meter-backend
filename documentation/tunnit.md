@@ -36,4 +36,5 @@
 **2.1.2021**|Frontend ja backend, harjoituksen resetointitoiminnon debuggausta, staten siirtäminen kokonaan Workout-komponenttiin|8
 3.1.|Frontend, edellisen jatkoa|2
 4.1.|Frontend ja backend, Workoutin käynnistystoiminto|1
-||yhteensä|145
+16.1.|Backend, WorkoutFactoryn laajennusta. Frontend, kilomäärän lisääminen workout-näkymään|1
+||yhteensä|146
