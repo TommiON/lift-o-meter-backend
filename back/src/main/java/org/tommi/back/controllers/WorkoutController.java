@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.tommi.back.domain.PreviousWorkouts;
+import org.tommi.back.domain.WorkoutFactory;
 import org.tommi.back.entities.Cycle;
 import org.tommi.back.entities.MoveSet;
 import org.tommi.back.entities.UserAccount;
@@ -22,6 +24,11 @@ import java.util.List;
 @RequestMapping("/api/workout")
 public class WorkoutController {
 
+    // väliaikainen
+    @Autowired
+    private PreviousWorkouts previousWorkouts;
+    // poistetaan, ei tarvita lopullisessa
+
     @Autowired
     private CurrentUser currentUser;
 
@@ -33,6 +40,9 @@ public class WorkoutController {
 
     @Autowired
     private WorkoutRepository workoutRepository;
+
+    @Autowired
+    private WorkoutFactory workoutFactory;
 
     @GetMapping(value = "/next", produces = MediaType.APPLICATION_JSON_VALUE)
     public Workout getNextWorkout() {
@@ -53,6 +63,15 @@ public class WorkoutController {
         return workoutRepository.save(workout);
     }
 
+    @GetMapping(value = "/finish/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Workout finish(@PathVariable Long id) {
+        UserAccount owner = currentUser.get();
+        Cycle currentCycle = cycleRepository.findByOwner(owner);
+        workoutFactory.buildNext(currentCycle);
+
+        return workoutRepository.getOne(id);
+    }
+
     @GetMapping(value = "/reset/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Workout reset(@PathVariable Long id) {
         Workout workout = workoutRepository.getOne(id);
@@ -65,4 +84,17 @@ public class WorkoutController {
         return workoutRepository.save(workout);
     }
 
+    // tämä testaamista varten, poistetaan myöhemmin!
+    @GetMapping(value = "/previous", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Workout> getPreviousWorkouts() {
+        return previousWorkouts.findPreviousWorkouts();
+    }
+    // poistetaan, ei tarvita lopullisessa
+
+    // tämä testaamista varten, poistetaan myöhemmin!
+    @GetMapping(value = "/previous/type", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getTypeOfLatest() {
+        return previousWorkouts.findTypeOfLatestWorkout();
+    }
+    // poistetaan, ei tarvita lopullisessa
 }
