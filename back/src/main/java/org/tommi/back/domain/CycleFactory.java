@@ -21,11 +21,11 @@ public class CycleFactory {
 
     public Cycle build(UserAccount owner, double squat, double deadlift, double bench, double row, double overhead) {
 
-        double startSquat       = Math.max((WeightRounder.roundDownToNearest2_5(squat / 2)),    20);
-        double startDeadlift    = Math.max((WeightRounder.roundDownToNearest2_5(deadlift / 2)), 20);
-        double startBench       = Math.max((WeightRounder.roundDownToNearest2_5(bench / 2)),    20);
-        double startRow         = Math.max((WeightRounder.roundDownToNearest2_5(row / 2)),      20);
-        double startOverhead    = Math.max((WeightRounder.roundDownToNearest2_5(overhead / 2)), 20);
+        double startSquat       = Math.max((WeightRounder.roundUpToNearest2_5(squat / 2)),    20);
+        double startDeadlift    = Math.max((WeightRounder.roundUpToNearest2_5(deadlift / 2)), 20);
+        double startBench       = Math.max((WeightRounder.roundUpToNearest2_5(bench / 2)),    20);
+        double startRow         = Math.max((WeightRounder.roundUpToNearest2_5(row / 2)),      20);
+        double startOverhead    = Math.max((WeightRounder.roundUpToNearest2_5(overhead / 2)), 20);
 
         Date startDate = new Date();
         Date endDate = null;
