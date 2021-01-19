@@ -81,6 +81,8 @@ public class PreviousWorkouts {
 
     public boolean threeFailuresFor(String move) {
         // implementoi
+        List<Workout> latestWorkouts = findPreviousWorkouts();
+        
         return false;
     }
 

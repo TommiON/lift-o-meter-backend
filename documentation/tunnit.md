@@ -38,4 +38,5 @@
 4.1.|Frontend ja backend, Workoutin käynnistystoiminto|1
 16.1.|Backend, WorkoutFactoryn laajennusta. Frontend, kilomäärän lisääminen workout-näkymään|1
 17.1.|Backend, uusia harjoituskertoja generoivan toiminnallisuuden koodaaminen (WorkoutFactory, PreviousWorkouts). Frontend, toiminnallisuus harjoituksen päättämiseksi|8
-||yhteensä|154
+19.1.|Frontend, harjoitusnäkymän (Workout- ja MoveSet-komponentit) koodaaminen kohti lopullista muotoaan. Backend, pieni muutoksia painojen määrittelyyn. |6
+||yhteensä|160

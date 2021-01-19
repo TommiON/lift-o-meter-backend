@@ -1,6 +1,6 @@
 package org.tommi.back.services;
 
-public class WeightRounder {
+public class    WeightRounder {
 
     public static double roundUpToNearest2_5(double weigth) throws IllegalArgumentException {
         if (weigth < 0) {
