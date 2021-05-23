@@ -40,4 +40,6 @@
 17.1.|Backend, uusia harjoituskertoja generoivan toiminnallisuuden koodaaminen (WorkoutFactory, PreviousWorkouts). Frontend, toiminnallisuus harjoituksen päättämiseksi|8
 19.1.|Frontend, harjoitusnäkymän (Workout- ja MoveSet-komponentit) koodaaminen kohti lopullista muotoaan. Backend, pieni muutoksia painojen määrittelyyn. |6
 26.1.|Frontend, testejä|2
-||yhteensä|162
+**22.5.**|Paluu projektiin, rakenteen ja koodin läpikäyntiä|2
+23.5.|Backend, painojen laskemisen logiikkaa koodattu uusiksi|4
+||yhteensä|168

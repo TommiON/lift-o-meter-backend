@@ -21,6 +21,49 @@ public class PreviousWorkouts {
     @Autowired
     private CurrentUser currentUser;
 
+    public String findTypeOfLatestWorkout() {
+        Workout latest = findTheLatestWorkout();
+        return latest.getType();
+    }
+
+    public double getLatestWeightsFor(String move) {
+        // käytetään kyykylle
+        Workout latest = findTheLatestWorkout();
+        for(MoveSet m : latest.getSets()) {
+            if(m.getMove().equals(move)) {
+                return m.getWeigth();
+            }
+        }
+
+        // käytetään muille
+        if(findTheSecondLatestWorkout() != null) {
+            Workout secondLatest = findTheSecondLatestWorkout();
+            for(MoveSet m : secondLatest.getSets()) {
+                if(m.getMove().equals(move)) {
+                    return m.getWeigth();
+                }
+            }
+        }
+
+        return -100;
+    }
+
+    public boolean oneOrTwoFailuresFor(String move) {
+        if(countFailuresFor(move) == 1 || countFailuresFor(move) == 2) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean threeFailuresFor(String move) {
+        if(countFailuresFor(move) >= 3) {
+            return true;
+        }
+        return false;
+    }
+
+    // privaatit apumetodit -->
+
     // muutetaan privateksi, nyt public testausta varten
     public List<Workout> findPreviousWorkouts() {
         UserAccount owner = currentUser.get();
@@ -48,42 +91,35 @@ public class PreviousWorkouts {
         }
     }
 
-    public String findTypeOfLatestWorkout() {
-        Workout latest = findTheLatestWorkout();
-        return latest.getType();
-    }
-
-    public double getLatestWeightsFor(String move) {
-        // löytää vain kyykyn
-        Workout latest = findTheLatestWorkout();
-        for(MoveSet m : latest.getSets()) {
-            if(m.getMove().equals(move)) {
-                return m.getWeigth();
+    private int countFailuresFor(String move) {
+        Workout latestWorkout = findTheLatestWorkout();
+        for(MoveSet moveSet : latestWorkout.getSets()) {
+            if(moveSet.getMove().equals(move) && moveSet.isDeloaded()) {
+                return 0;
             }
         }
 
-        if(findTheSecondLatestWorkout() != null) {
-            Workout secondLatest = findTheSecondLatestWorkout();
-            for(MoveSet m : secondLatest.getSets()) {
-                if(m.getMove().equals(move)) {
-                    return m.getWeigth();
+        int failures = 0;
+        List<Workout> latestWorkouts = findPreviousWorkouts();
+
+        if(!move.equals("DEADLIFT")) {
+            int numberToCheck = Math.min(3, latestWorkouts.size());
+            latestWorkouts = latestWorkouts.subList(numberToCheck, latestWorkouts.size());
+        }
+
+        for(Workout workout : latestWorkouts) {
+            for(MoveSet moveSet : workout.getSets()) {
+                if(moveSet.getMove().equals(move) && moveSet.getRepetitions() < 5) {
+                    failures++;
+                    if(moveSet.isDeloaded()) {
+                        return failures;
+                    }
+                    break;
                 }
             }
         }
 
-        return -100;
-    }
-
-    public boolean oneOrTwoFailuresFor(String move) {
-        // implementoi
-        return false;
-    }
-
-    public boolean threeFailuresFor(String move) {
-        // implementoi
-        List<Workout> latestWorkouts = findPreviousWorkouts();
-        
-        return false;
+        return failures;
     }
 
 }

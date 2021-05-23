@@ -17,8 +17,8 @@ public class MoveSetFactory {
     @Autowired
     private MoveSetRepository moveSetRepository;
 
-    public MoveSet build(Workout workout, String move, double weigth) {
-        MoveSet moveSet = new MoveSet(workout, move, weigth, -1);
+    public MoveSet build(Workout workout, String move, double weigth, boolean deloaded) {
+        MoveSet moveSet = new MoveSet(workout, move, weigth, -1, deloaded);
 
         return moveSetRepository.save(moveSet);
     }

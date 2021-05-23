@@ -28,22 +28,21 @@ public class WorkoutFactory {
     @Autowired
     private CurrentUser currentUser;
 
-    // tästä kannattaisi refaktoroitua eroon ja hoitaa kaikki buildNext():lla
     public Workout buildInitial(Cycle cycle, double squat, double bench, double row, double overhead, double deadlift) {
-        Date date = null;
-        Workout workout = new Workout(cycle, "A", new ArrayList<>(), date);
+        Date date    = null;
+        Workout workout = new Workout(cycle, "A", new ArrayList<>(), date, 0, 0, 0, 0, 0);
 
         ArrayList<MoveSet> moveSets = new ArrayList<>();
         for(int i = 1; i <= 5; i++) {
-            MoveSet moveSet = moveSetFactory.build(workout, "SQUAT", squat);
+            MoveSet moveSet = moveSetFactory.build(workout, "SQUAT", squat, false);
             moveSets.add(moveSet);
         }
         for(int i = 1; i <= 5; i++) {
-            MoveSet moveSet = moveSetFactory.build(workout, "BENCH", bench);
+            MoveSet moveSet = moveSetFactory.build(workout, "BENCH", bench, false);
             moveSets.add(moveSet);
         }
         for(int i = 1; i <= 5; i++) {
-            MoveSet moveSet = moveSetFactory.build(workout, "ROW", row);
+            MoveSet moveSet = moveSetFactory.build(workout, "ROW", row,  false);
             moveSets.add(moveSet);
         }
 
@@ -52,54 +51,90 @@ public class WorkoutFactory {
         return workoutRepository.save(workout);
     }
 
-    public Workout buildNext(Cycle cycle) {
-        Date date = null;
-        String type = inferType();
-        Workout workout = new Workout(cycle, type, new ArrayList<>(), date);
+    public Workout buildNext(Cycle cycle, Workout completedWorkout) {
+        String type = inferType(completedWorkout);
+
+        Workout nextWorkout = new Workout(cycle,
+                type,
+                new ArrayList<>(),
+                null,
+                completedWorkout.getCumulativeFailedSquat(),
+                completedWorkout.getCumulativeFailedBenchPress(),
+                completedWorkout.getCumulativeFailedBarbellRow(),
+                completedWorkout.getCumulativeFailedOverheadPress(),
+                completedWorkout.getCumulativeFailedDeadlift());
 
         ArrayList<MoveSet> moveSets;
+
         if(cycle.getWorkouts().size() == 1) {
-            moveSets = buildInitialForB(workout);
+            moveSets = buildInitialForB(nextWorkout);
         } else if(type.equals("A")) {
-            moveSets = generateMoveSetsForA(workout);
+            moveSets = generateMoveSetsForA(nextWorkout, completedWorkout);
         } else {
-            moveSets = generateMoveSetsForB(workout);
+            moveSets = generateMoveSetsForB(nextWorkout);
         }
 
-        workout.setSets(moveSets);
+        nextWorkout.setSets(moveSets);
 
-        return workoutRepository.save(workout);
+        return workoutRepository.save(nextWorkout);
     }
 
-    private String inferType() {
-        if(previousWorkouts.findTypeOfLatestWorkout().equals("A")) {
+    private String inferType(Workout previousWorkout) {
+        if(previousWorkout.getType().equals("A")) {
             return "B";
         } else {
             return "A";
         }
     }
 
-    private ArrayList<MoveSet> generateMoveSetsForA(Workout workout) {
+    private ArrayList<MoveSet> generateMoveSetsForA(Workout nextWorkout, Workout completedWorkout) {
         ArrayList<MoveSet> moveSets = new ArrayList<>();
 
         double previousSquatWeigth = previousWorkouts.getLatestWeightsFor("SQUAT");
-        double newSquatWeigth = WeightRounder.roundUpToNearest2_5(PROGRESS_FACTOR * previousSquatWeigth);
+        double newSquatWeigth;
+        boolean squatDeloaded = false;
+        if(completedWorkout.getCumulativeFailedSquat() == 1 || completedWorkout.getCumulativeFailedSquat() == 2) {
+            newSquatWeigth = previousSquatWeigth;
+        } else if(completedWorkout.getCumulativeFailedSquat() == 3) {
+            newSquatWeigth = WeightRounder.roundUpToNearest2_5(DELOAD_FACTOR * previousSquatWeigth);
+            squatDeloaded = true;
+        } else {
+            newSquatWeigth = WeightRounder.roundUpToNearest2_5(PROGRESS_FACTOR * previousSquatWeigth);
+        }
         for(int i = 1; i <= 5; i++) {
-            MoveSet moveSet = moveSetFactory.build(workout, "SQUAT", newSquatWeigth);
+            MoveSet moveSet = moveSetFactory.build(nextWorkout, "SQUAT", newSquatWeigth, squatDeloaded);
             moveSets.add(moveSet);
         }
 
         double previousBenchWeight = previousWorkouts.getLatestWeightsFor("BENCH");
-        double newBenchWeight = WeightRounder.roundUpToNearest2_5(PROGRESS_FACTOR * previousBenchWeight);
+        double newBenchWeight;
+        boolean benchDeloaded = false;
+        if(completedWorkout.getCumulativeFailedBenchPress() == 1 || completedWorkout.getCumulativeFailedBenchPress() == 2) {
+            newBenchWeight = previousBenchWeight;
+        } else if(completedWorkout.getCumulativeFailedBenchPress() == 3) {
+            newBenchWeight = WeightRounder.roundUpToNearest2_5(DELOAD_FACTOR * previousBenchWeight);
+            benchDeloaded = true;
+        } else {
+            newBenchWeight = WeightRounder.roundUpToNearest2_5(PROGRESS_FACTOR * previousBenchWeight);
+        }
         for(int i = 1; i <= 5; i++) {
-            MoveSet moveSet = moveSetFactory.build(workout, "BENCH", newBenchWeight);
+            MoveSet moveSet = moveSetFactory.build(nextWorkout, "BENCH", newBenchWeight, benchDeloaded);
             moveSets.add(moveSet);
         }
 
         double previousRowWeight = previousWorkouts.getLatestWeightsFor("ROW");
-        double newRowWeight = WeightRounder.roundUpToNearest2_5(PROGRESS_FACTOR * previousRowWeight);
+        double newRowWeight;
+        boolean rowDeloaded = false;
+        if(completedWorkout.getCumulativeFailedBarbellRow() == 1 || completedWorkout.getCumulativeFailedBarbellRow() == 2) {
+            newRowWeight = previousRowWeight;
+        } else if(completedWorkout.getCumulativeFailedBarbellRow() == 3) {
+            newRowWeight = WeightRounder.roundUpToNearest2_5(DELOAD_FACTOR * previousRowWeight);
+            rowDeloaded = true;
+        } else {
+            newRowWeight = WeightRounder.roundUpToNearest2_5(PROGRESS_FACTOR * previousRowWeight);
+        }
         for(int i = 1; i <= 5; i++) {
-            MoveSet moveSet = moveSetFactory.build(workout, "ROW", newRowWeight);
+            MoveSet moveSet = moveSetFactory.build(nextWorkout, "ROW", newRowWeight, false);
             moveSets.add(moveSet);
         }
 
@@ -110,22 +145,31 @@ public class WorkoutFactory {
         ArrayList<MoveSet> moveSets = new ArrayList<>();
 
         double previousSquatWeight = previousWorkouts.getLatestWeightsFor("SQUAT");
-        double newSquatWeigth = WeightRounder.roundUpToNearest2_5(PROGRESS_FACTOR * previousSquatWeight);
+        double newSquatWeigth;
+        boolean squatDeloaded = false;
+        if(previousWorkouts.oneOrTwoFailuresFor("SQUAT")) {
+            newSquatWeigth = previousSquatWeight;
+        } else if(previousWorkouts.threeFailuresFor("SQUAT")) {
+            newSquatWeigth = WeightRounder.roundUpToNearest2_5(DELOAD_FACTOR * previousSquatWeight);
+            squatDeloaded = true;
+        } else {
+            newSquatWeigth = WeightRounder.roundUpToNearest2_5(PROGRESS_FACTOR * previousSquatWeight);
+        }
         for(int i = 1; i <= 5; i++) {
-            MoveSet moveSet = moveSetFactory.build(workout, "SQUAT", newSquatWeigth);
+            MoveSet moveSet = moveSetFactory.build(workout, "SQUAT", newSquatWeigth, squatDeloaded);
             moveSets.add(moveSet);
         }
 
         double previousOverheadWeight = previousWorkouts.getLatestWeightsFor("OVERHEAD");
         double newOverheadWeight = WeightRounder.roundUpToNearest2_5(PROGRESS_FACTOR * previousOverheadWeight);
         for(int i = 1; i <= 5; i++) {
-            MoveSet moveSet = moveSetFactory.build(workout, "OVERHEAD", newOverheadWeight);
+            MoveSet moveSet = moveSetFactory.build(workout, "OVERHEAD", newOverheadWeight, false);
             moveSets.add(moveSet);
         }
 
         double previousDeadliftWeight = previousWorkouts.getLatestWeightsFor("DEADLIFT");
         double newDeadliftWeight = WeightRounder.roundUpToNearest2_5(PROGRESS_FACTOR * previousDeadliftWeight);
-        MoveSet moveSet = moveSetFactory.build(workout, "DEADLIFT", newDeadliftWeight);
+        MoveSet moveSet = moveSetFactory.build(workout, "DEADLIFT", newDeadliftWeight, false);
         moveSets.add(moveSet);
 
         return moveSets;
@@ -138,18 +182,18 @@ public class WorkoutFactory {
         double previousSquatWeigth = previousWorkouts.getLatestWeightsFor("SQUAT");
         double newSquatWeigth = WeightRounder.roundUpToNearest2_5(PROGRESS_FACTOR * previousSquatWeigth);
         for(int i = 1; i <= 5; i++) {
-            MoveSet moveSet = moveSetFactory.build(workout, "SQUAT", newSquatWeigth);
+            MoveSet moveSet = moveSetFactory.build(workout, "SQUAT", newSquatWeigth, false);
             moveSets.add(moveSet);
         }
 
         double initialOverheadWeight = cycle.getOverheadPressStartWeight();
         for(int i = 1; i <= 5; i++) {
-            MoveSet moveSet = moveSetFactory.build(workout, "OVERHEAD", initialOverheadWeight);
+            MoveSet moveSet = moveSetFactory.build(workout, "OVERHEAD", initialOverheadWeight, false);
             moveSets.add(moveSet);
         }
 
         double initialDeadliftWeight = cycle.getDeadliftStartWeigth();
-        MoveSet moveSet = moveSetFactory.build(workout, "DEADLIFT", initialDeadliftWeight);
+        MoveSet moveSet = moveSetFactory.build(workout, "DEADLIFT", initialDeadliftWeight, false);
         moveSets.add(moveSet);
 
         return moveSets;

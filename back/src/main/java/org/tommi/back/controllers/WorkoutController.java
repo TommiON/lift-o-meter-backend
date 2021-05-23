@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.tommi.back.domain.FailureChecker;
 import org.tommi.back.domain.PreviousWorkouts;
 import org.tommi.back.domain.WorkoutFactory;
 import org.tommi.back.entities.Cycle;
@@ -44,6 +45,9 @@ public class WorkoutController {
     @Autowired
     private WorkoutFactory workoutFactory;
 
+    @Autowired
+    private FailureChecker failureChecker;
+
     @GetMapping(value = "/next", produces = MediaType.APPLICATION_JSON_VALUE)
     public Workout getNextWorkout() {
         UserAccount owner = currentUser.get();
@@ -67,9 +71,14 @@ public class WorkoutController {
     public Workout finish(@PathVariable Long id) {
         UserAccount owner = currentUser.get();
         Cycle currentCycle = cycleRepository.findByOwner(owner);
-        workoutFactory.buildNext(currentCycle);
+        Workout justCompletedWorkout = workoutRepository.getOne(id);
 
-        return workoutRepository.getOne(id);
+        justCompletedWorkout = failureChecker.checkAndUpdate(justCompletedWorkout);
+        workoutRepository.save(justCompletedWorkout);
+
+        workoutFactory.buildNext(currentCycle, justCompletedWorkout);
+
+        return justCompletedWorkout;
     }
 
     @GetMapping(value = "/reset/{id}", produces = MediaType.APPLICATION_JSON_VALUE)

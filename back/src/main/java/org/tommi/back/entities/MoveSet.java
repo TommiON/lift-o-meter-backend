@@ -30,4 +30,5 @@ public class MoveSet extends AbstractPersistable<Long> {
 
     private int repetitions;
 
+    private boolean deloaded;
 }

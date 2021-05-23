@@ -32,4 +32,9 @@ public class Workout extends AbstractPersistable<Long> {
 
     private Date date;
 
+    private int cumulativeFailedSquat;
+    private int cumulativeFailedBenchPress;
+    private int cumulativeFailedBarbellRow;
+    private int cumulativeFailedOverheadPress;
+    private int cumulativeFailedDeadlift;
 }
