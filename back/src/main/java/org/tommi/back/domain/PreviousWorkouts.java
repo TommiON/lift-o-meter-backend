@@ -94,7 +94,7 @@ public class PreviousWorkouts {
     private int countFailuresFor(String move) {
         Workout latestWorkout = findTheLatestWorkout();
         for(MoveSet moveSet : latestWorkout.getSets()) {
-            if(moveSet.getMove().equals(move) && moveSet.isDeloaded()) {
+            if(moveSet.getMove().equals(move) /*&& moveSet.isDeloaded()*/) {
                 return 0;
             }
         }
@@ -111,10 +111,13 @@ public class PreviousWorkouts {
             for(MoveSet moveSet : workout.getSets()) {
                 if(moveSet.getMove().equals(move) && moveSet.getRepetitions() < 5) {
                     failures++;
+                    /*
                     if(moveSet.isDeloaded()) {
                         return failures;
                     }
                     break;
+
+                     */
                 }
             }
         }

@@ -34,7 +34,7 @@ public class UserFactory {
                 bestSquat
         );
 
-        Cycle cycle = cycleFactory.build(user, bestSquat, bestDeadlift, bestBenchpress, bestBarbellrow, bestBarbellrow);
+        Cycle cycle = cycleFactory.build(user, bestSquat, bestDeadlift, bestBenchpress, bestBarbellrow, bestOverheadpress);
 
         user.addCycle(cycle);
 

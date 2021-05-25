@@ -18,19 +18,25 @@ public class FailureChecker {
                     checkedMoves.add(move.getMove());
                     switch (move.getMove()) {
                         case "SQUAT":
-                            workout.setCumulativeFailedSquat(workout.getCumulativeFailedSquat() + 1);
+                            workout.setSquatFailures(workout.getSquatFailures() + 1);
+                            workout.setLatestSquatFailed(true);
                             break;
                         case "BENCH":
-                            workout.setCumulativeFailedBenchPress(workout.getCumulativeFailedBenchPress() + 1);
+                            workout.setBenchFailures(workout.getBenchFailures() + 1);
+                            workout.setLatestBenchFailed(true);
                             break;
                         case "ROW":
-                            workout.setCumulativeFailedBarbellRow(workout.getCumulativeFailedBarbellRow() + 1);
+                            workout.setRowFailures(workout.getRowFailures() + 1);
+                            workout.setLatestRowFailed(true);
                             break;
                         case "OVERHEAD":
-                            workout.setCumulativeFailedOverheadPress(workout.getCumulativeFailedOverheadPress() + 1);
+                            workout.setOverheadFailures(workout.getOverheadFailures() + 1);
+                            workout.setLatestOverheadFailed(true);
                             break;
                         case "DEADLIFT":
-                            workout.setCumulativeFailedDeadlift(workout.getCumulativeFailedDeadlift() + 1);
+                            workout.setDeadliftFailures(workout.getDeadliftFailures() + 1);
+                            workout.setLatestDeadliftFailed(true);
+                            break;
                     }
                 }
             }

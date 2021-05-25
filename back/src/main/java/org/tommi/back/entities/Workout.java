@@ -32,9 +32,31 @@ public class Workout extends AbstractPersistable<Long> {
 
     private Date date;
 
-    private int cumulativeFailedSquat;
-    private int cumulativeFailedBenchPress;
-    private int cumulativeFailedBarbellRow;
-    private int cumulativeFailedOverheadPress;
-    private int cumulativeFailedDeadlift;
+    private double targetSquat;
+    private double targetBench;
+    private double targetRow;
+    private double targetOverhead;
+    private double targetDeadlift;
+
+    @JsonIgnore
+    private int squatFailures;
+    @JsonIgnore
+    private int benchFailures;
+    @JsonIgnore
+    private int rowFailures;
+    @JsonIgnore
+    private int overheadFailures;
+    @JsonIgnore
+    private int deadliftFailures;
+
+    @JsonIgnore
+    private boolean latestSquatFailed;
+    @JsonIgnore
+    private boolean latestBenchFailed;
+    @JsonIgnore
+    private boolean latestRowFailed;
+    @JsonIgnore
+    private boolean latestOverheadFailed;
+    @JsonIgnore
+    private boolean latestDeadliftFailed;
 }

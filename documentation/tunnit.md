@@ -42,4 +42,5 @@
 26.1.|Frontend, testejä|2
 **22.5.**|Paluu projektiin, rakenteen ja koodin läpikäyntiä|2
 23.5.|Backend, painojen laskemisen logiikkaa koodattu uusiksi|4
-||yhteensä|168
+25.5.|Backend, painojen laskemisen logiikan koodausta eteenpäin|4
+||yhteensä|172
