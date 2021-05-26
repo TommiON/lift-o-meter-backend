@@ -132,7 +132,7 @@ public class WorkoutFactory {
                 underConstruction.setBenchFailures(0);
             }
         } else {
-            underConstruction.setTargetBench(WeightRounder.roundUpToNearest2_5(PROGRESS_FACTOR * completedWorkout.getTargetSquat()));
+            underConstruction.setTargetBench(WeightRounder.roundUpToNearest2_5(PROGRESS_FACTOR * completedWorkout.getTargetBench()));
             underConstruction.setBenchFailures(0);
         }
         for(int i = 1; i <= 5; i++) {
