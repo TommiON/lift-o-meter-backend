@@ -43,4 +43,5 @@
 **22.5.**|Paluu projektiin, rakenteen ja koodin läpikäyntiä|2
 23.5.|Backend, painojen laskemisen logiikkaa koodattu uusiksi|4
 25.5.|Backend, painojen laskemisen logiikan koodausta eteenpäin|4
-||yhteensä|172
+**1.6.**|Frontend, Bootstrapin käyttöönotto, ensimmäinen versio navipalkista|6
+||yhteensä|178
