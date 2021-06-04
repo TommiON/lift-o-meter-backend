@@ -44,4 +44,5 @@
 23.5.|Backend, painojen laskemisen logiikkaa koodattu uusiksi|4
 25.5.|Backend, painojen laskemisen logiikan koodausta eteenpäin|4
 **1.6.**|Frontend, Bootstrapin käyttöönotto, ensimmäinen versio navipalkista|6
-||yhteensä|178
+5.6|Frontend, UserAdder-lomakkeen uuden version aloitus Bootstrapilla|4
+||yhteensä|182
