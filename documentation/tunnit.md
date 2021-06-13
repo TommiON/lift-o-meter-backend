@@ -46,4 +46,5 @@
 **1.6.**|Frontend, Bootstrapin käyttöönotto, ensimmäinen versio navipalkista|6
 5.6|Frontend, UserAdder-lomakkeen uuden version aloitus Bootstrapilla|4
 6.6|Frontend, UserAdderin jatkaminen, notifikaatiojärjestelmän aloitus|3
-||yhteensä|185
+12.3|Frontend, työstöä eteenpäin, muun muassa React Router-reititystä, notifikaatioita|6
+||yhteensä|191
