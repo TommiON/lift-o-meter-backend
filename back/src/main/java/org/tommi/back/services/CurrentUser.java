@@ -18,6 +18,7 @@ public class CurrentUser {
     public UserAccount get() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
+        System.out.println("*** CurrentUser: " + username);
         UserAccount account = userAccountRepository.findByUsername(username).get();
         return account;
     }

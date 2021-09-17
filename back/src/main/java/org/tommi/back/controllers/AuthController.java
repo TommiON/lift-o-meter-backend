@@ -5,8 +5,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.*;
 import org.tommi.back.domain.UserFactory;
 import org.tommi.back.entities.UserAccount;
@@ -14,9 +16,12 @@ import org.tommi.back.repositories.UserAccountRepository;
 import org.tommi.back.repositories.UserRoleRepository;
 import org.tommi.back.security.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.security.Principal;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -72,5 +77,24 @@ public class AuthController {
         );
 
         return ResponseEntity.ok(new MessageResponse("Uusi käyttäjätunnus lisätty!"));
+    }
+
+    @GetMapping("/logout")
+    public ResponseEntity<?> logoutUser(HttpServletRequest request, HttpServletResponse response) {
+        //SecurityContextHolder.clearContext();
+        //SecurityContextHolder.setContext(null);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if(authentication != null) {
+            new SecurityContextLogoutHandler().logout(request, response, authentication);
+        }
+        return ResponseEntity.ok(new MessageResponse("Kirjauduttu ulos!"));
+    }
+
+    @GetMapping("/currentUser")
+    @ResponseBody
+    public String currentUserName(Principal principal) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        return username;
     }
 }
