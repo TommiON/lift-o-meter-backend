@@ -46,7 +46,8 @@
 **1.6.**|Frontend, Bootstrapin käyttöönotto, ensimmäinen versio navipalkista|6
 5.6|Frontend, UserAdder-lomakkeen uuden version aloitus Bootstrapilla|4
 6.6|Frontend, UserAdderin jatkaminen, notifikaatiojärjestelmän aloitus|3
-12.3|Frontend, työstöä eteenpäin, muun muassa React Router-reititystä, notifikaatioita|6
+12.6|Frontend, työstöä eteenpäin, muun muassa React Router-reititystä, notifikaatioita|6
 **17.9.**|Paluu projektiin. Frontend ja backend, token-kirjautumisen ja logoutin säätämistä|4
 **2.10.**|Frontend, token-ongelman debuggaamista ja mahdollinen ratkaisu|4
-||yhteensä|199
+3.10.|Frontend, Workoutin lataaminen kirjautumisen jälkeen kuntoon|2
+||yhteensä|201
