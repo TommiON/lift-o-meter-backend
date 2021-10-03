@@ -84,7 +84,7 @@ public class WorkoutController {
 
     @GetMapping(value = "/reset/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Workout reset(@PathVariable Long id) {
-        Workout workout = workoutRepository.getOne(id);
+        Workout workout = workoutRepository.findById(id).get();
 
         for (MoveSet m : workout.getSets()) {
             m.setRepetitions(-1);
