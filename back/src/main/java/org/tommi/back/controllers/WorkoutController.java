@@ -71,7 +71,8 @@ public class WorkoutController {
     public Workout finish(@PathVariable Long id) {
         UserAccount owner = currentUser.get();
         Cycle currentCycle = cycleRepository.findByOwner(owner);
-        Workout justCompletedWorkout = workoutRepository.getOne(id);
+        //Workout justCompletedWorkout = workoutRepository.getOne(id);
+        Workout justCompletedWorkout = workoutRepository.findById(id).get();
 
         justCompletedWorkout = failureChecker.checkAndUpdate(justCompletedWorkout);
         workoutRepository.save(justCompletedWorkout);
