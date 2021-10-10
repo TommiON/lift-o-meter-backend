@@ -19,7 +19,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Workout extends AbstractPersistable<Long> {
+public class Workout extends AbstractPersistable<Long> implements Comparable<Workout>{
 
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
@@ -59,4 +59,17 @@ public class Workout extends AbstractPersistable<Long> {
     private boolean latestOverheadFailed;
     @JsonIgnore
     private boolean latestDeadliftFailed;
+
+    @Override
+    public int compareTo(Workout w) {
+       if(this.date == null || w.date == null) {
+           return 0;
+       }
+
+       if(this.date.before(w.date)) {
+           return -1;
+       } else {
+           return 1;
+       }
+    }
 }

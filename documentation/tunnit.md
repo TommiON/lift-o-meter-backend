@@ -50,4 +50,6 @@
 **17.9.**|Paluu projektiin. Frontend ja backend, token-kirjautumisen ja logoutin säätämistä|4
 **2.10.**|Frontend, token-ongelman debuggaamista ja mahdollinen ratkaisu|4
 3.10.|Frontend, Workoutin lataaminen kirjautumisen jälkeen kuntoon|2
-||yhteensä|201
+8.10.|Frontend, Workoutin käyttöliittymän säätöä ym.|1
+10.10|Frontend ja backend, jo tehtyjen workouttien näyttämistoiminnallisuutta jne|5
+||yhteensä|207

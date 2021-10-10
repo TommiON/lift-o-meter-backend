@@ -16,9 +16,7 @@ import org.tommi.back.repositories.MoveSetRepository;
 import org.tommi.back.repositories.WorkoutRepository;
 import org.tommi.back.services.CurrentUser;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -71,15 +69,16 @@ public class WorkoutController {
     public Workout finish(@PathVariable Long id) {
         UserAccount owner = currentUser.get();
         Cycle currentCycle = cycleRepository.findByOwner(owner);
-        //Workout justCompletedWorkout = workoutRepository.getOne(id);
-        Workout justCompletedWorkout = workoutRepository.findById(id).get();
 
-        justCompletedWorkout = failureChecker.checkAndUpdate(justCompletedWorkout);
-        workoutRepository.save(justCompletedWorkout);
+        //Workout completedWorkout = workoutRepository.getOne(id);
 
-        workoutFactory.buildNext(currentCycle, justCompletedWorkout);
+        Workout completedWorkout = workoutRepository.findById(id).get();
+        completedWorkout = failureChecker.checkAndUpdate(completedWorkout);
+        workoutRepository.save(completedWorkout);
 
-        return justCompletedWorkout;
+        Workout nextWorkout = workoutFactory.buildNext(currentCycle, completedWorkout);
+
+        return nextWorkout;
     }
 
     @GetMapping(value = "/reset/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -92,6 +91,18 @@ public class WorkoutController {
         workout.setDate(null);
 
         return workoutRepository.save(workout);
+    }
+
+    @GetMapping(value = "/completed", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Workout> getCompleted() {
+        UserAccount owner = currentUser.get();
+        Cycle currentCycle = cycleRepository.findByOwner(owner);
+
+        List<Workout> workouts = currentCycle.getWorkouts();
+        Collections.sort(workouts);
+        Collections.reverse(workouts);
+
+        return workouts;
     }
 
     // tämä testaamista varten, poistetaan myöhemmin!
