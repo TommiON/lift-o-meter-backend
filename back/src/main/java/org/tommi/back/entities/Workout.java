@@ -38,27 +38,16 @@ public class Workout extends AbstractPersistable<Long> implements Comparable<Wor
     private double targetOverhead;
     private double targetDeadlift;
 
-    @JsonIgnore
+    //@JsonIgnore
     private int squatFailures;
-    @JsonIgnore
+    //@JsonIgnore
     private int benchFailures;
-    @JsonIgnore
+    //@JsonIgnore
     private int rowFailures;
-    @JsonIgnore
+    //@JsonIgnore
     private int overheadFailures;
-    @JsonIgnore
+    //@JsonIgnore
     private int deadliftFailures;
-
-    @JsonIgnore
-    private boolean latestSquatFailed;
-    @JsonIgnore
-    private boolean latestBenchFailed;
-    @JsonIgnore
-    private boolean latestRowFailed;
-    @JsonIgnore
-    private boolean latestOverheadFailed;
-    @JsonIgnore
-    private boolean latestDeadliftFailed;
 
     @Override
     public int compareTo(Workout w) {

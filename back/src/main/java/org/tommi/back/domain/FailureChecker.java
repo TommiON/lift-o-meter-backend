@@ -10,34 +10,52 @@ import java.util.HashSet;
 public class FailureChecker {
 
     public Workout checkAndUpdate(Workout workout) {
-        HashSet<String> checkedMoves = new HashSet<>();
+        HashSet<String> allMoves = new HashSet<>();
+        HashSet<String> failedMoves = new HashSet<>();
 
-        for(MoveSet move : workout.getSets()) {
-            if(move.getRepetitions() < 5) {
-                if(!checkedMoves.contains(move.getMove())) {
-                    checkedMoves.add(move.getMove());
-                    switch (move.getMove()) {
-                        case "SQUAT":
-                            workout.setSquatFailures(workout.getSquatFailures() + 1);
-                            workout.setLatestSquatFailed(true);
-                            break;
-                        case "BENCH":
-                            workout.setBenchFailures(workout.getBenchFailures() + 1);
-                            workout.setLatestBenchFailed(true);
-                            break;
-                        case "ROW":
-                            workout.setRowFailures(workout.getRowFailures() + 1);
-                            workout.setLatestRowFailed(true);
-                            break;
-                        case "OVERHEAD":
-                            workout.setOverheadFailures(workout.getOverheadFailures() + 1);
-                            workout.setLatestOverheadFailed(true);
-                            break;
-                        case "DEADLIFT":
-                            workout.setDeadliftFailures(workout.getDeadliftFailures() + 1);
-                            workout.setLatestDeadliftFailed(true);
-                            break;
-                    }
+        for (MoveSet move : workout.getSets()) {
+            allMoves.add(move.getMove());
+            if (move.getRepetitions() < 5) {
+                failedMoves.add(move.getMove());
+            }
+        }
+
+        for (String move : allMoves) {
+            if (failedMoves.contains(move)) {
+                switch (move) {
+                    case "SQUAT":
+                        workout.setSquatFailures(workout.getSquatFailures() + 1);
+                        break;
+                    case "BENCH":
+                        workout.setBenchFailures(workout.getBenchFailures() + 1);
+                        break;
+                    case "ROW":
+                        workout.setRowFailures(workout.getRowFailures() + 1);
+                        break;
+                    case "OVERHEAD":
+                        workout.setOverheadFailures(workout.getOverheadFailures() + 1);
+                        break;
+                    case "DEADLIFT":
+                        workout.setDeadliftFailures(workout.getDeadliftFailures() + 1);
+                        break;
+                }
+            } else {
+                switch (move) {
+                    case "SQUAT":
+                        workout.setSquatFailures(0);
+                        break;
+                    case "BENCH":
+                        workout.setBenchFailures(0);
+                        break;
+                    case "ROW":
+                        workout.setRowFailures(0);
+                        break;
+                    case "OVERHEAD":
+                        workout.setOverheadFailures(0);
+                        break;
+                    case "DEADLIFT":
+                        workout.setDeadliftFailures(0);
+                        break;
                 }
             }
         }
