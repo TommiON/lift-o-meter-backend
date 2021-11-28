@@ -54,4 +54,5 @@
 10.10|Frontend ja backend, jo tehtyjen workouttien näyttämistoiminnallisuutta jne|5
 12.10|Frontend, workoutin tilalogiikan säätämistä, frontendin jatkoa|2
 23.10.|Backend, painolaskennan bugin korjaaminen|4
-||yhteensä|213
+**27.11.**|Frontend ja backend, konfiguroinnin muutoksia, testien muutoksia|1
+||yhteensä|214
