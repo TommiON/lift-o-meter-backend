@@ -99,6 +99,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <finalName>lift-o-meter-back</finalName>
     </build>
 
 </project>
