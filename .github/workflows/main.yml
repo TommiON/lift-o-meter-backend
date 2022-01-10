@@ -1,0 +1,29 @@
+name: CI/CD pipeline for Lift-o-Meter
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  Backend:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get repo contents
+      uses: actions/checkout@v2
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        java-version: '8'
+        distribution: 'adopt'
+        cache: maven
+    - name: Maven clean install
+      run: |
+        cd back
+        mvn clean install
+    - name: Maven tests
+      run: |
+        cd back
+        mvn test
