@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+// start point
+
 @SpringBootApplication
 @EnableJpaRepositories(basePackages="org.tommi.back.repositories")
 @ComponentScan(basePackages = {"org.tommi.back"})
