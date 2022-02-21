@@ -1,1 +1,6 @@
 **/.DS_Store
+target
+database
+back/.idea
+back/back.iml
+
