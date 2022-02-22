@@ -31,3 +31,13 @@ jobs:
     - name: Maven tests
       run:
         mvn test
+    - name: Deploy to Heroku
+      uses: akhileshns/heroku-deploy@v3.12.12
+      if: ${{ github.event_name == 'push' }}
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_app_name: "lift-o-meter-back"
+        heroku_email: "tommi.niittymies@gmail.com"
+        healthcheck: "https://lift-o-meter-back.herokuapp.com/api/test/healthcheck"
+        checkstring: "Up and running..."
+        rollbackonhealthcheckfailed: true
