@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -Dserver.port=$PORT -jar target/lift-o-meter-back.jar
+web: java $JAVA_OPTS -Dserver.port=$PORT -jar back/target/lift-o-meter-back.jar
