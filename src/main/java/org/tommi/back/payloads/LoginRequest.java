@@ -1,4 +1,4 @@
-package org.tommi.back.security;
+package org.tommi.back.payloads;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

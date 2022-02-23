@@ -55,4 +55,5 @@
 12.10|Frontend, workoutin tilalogiikan säätämistä, frontendin jatkoa|2
 23.10.|Backend, painolaskennan bugin korjaaminen|4
 **27.11.**|Frontend ja backend, konfiguroinnin muutoksia, testien muutoksia|1
-||yhteensä|214
+**22.2.2022**|Backendin refaktorointi omaksi repokseen, CI/CD-putken rakentamista, ensimmäinen deployment Herokuun|4
+||yhteensä|218
