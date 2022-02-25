@@ -49,7 +49,8 @@ public class JwtUtils {
         } catch (MalformedJwtException e) {
             logger.error("Virheellinen JWT-token: {}", e.getMessage());
         } catch (ExpiredJwtException e) {
-            logger.error("JWT-token on vanhentunut: {}", e.getMessage());
+            // logger.error("JWT-token on vanhentunut: {}", e.getMessage());
+            return true;
         } catch (UnsupportedJwtException e) {
             logger.error("JWT-tokenia ei tueta: {}", e.getMessage());
         } catch (IllegalArgumentException e) {
