@@ -22,12 +22,6 @@ public class JwtUtils {
     public String generateJwtToken(Authentication authentication) {
         UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
 
-        System.out.println("*** Rakennetaan tokenia!");
-        System.out.println("*** jwtSecret: " + jwtSecret);
-        System.out.println("*** jwtExpirationMs: " + jwtExpirationMs);
-        System.out.println("*** expiration-aika: " + (new Date((new Date()).getTime() + jwtExpirationMs)));
-        System.out.println("*** sama vielä merkkijonona: " + (new Date((new Date()).getTime() + jwtExpirationMs)).toString());
-
         return Jwts.builder()
                 .setSubject((userPrincipal.getUsername()))
                 .setIssuedAt(new Date())
