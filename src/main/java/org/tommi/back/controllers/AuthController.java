@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.security.Principal;
 
-@CrossOrigin(origins = "http://lift-o-meter-front.herokuapp.com/")
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -39,7 +39,6 @@ public class AuthController {
     @Autowired
     UserFactory userFactory;
 
-    @CrossOrigin(origins = "http://lift-o-meter-front.herokuapp.com/")
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate(
@@ -59,7 +58,6 @@ public class AuthController {
                 roles));
     }
 
-    @CrossOrigin(origins = "http://lift-o-meter-front.herokuapp.com/")
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@RequestBody SignupRequest signUpRequest) {
         if(userFactory.usernameAlreadyTaken(signUpRequest.getUsername())) {
@@ -81,7 +79,6 @@ public class AuthController {
         return ResponseEntity.ok(new MessageResponse("Uusi käyttäjätunnus lisätty!"));
     }
 
-    @CrossOrigin(origins = "http://lift-o-meter-front.herokuapp.com/")
     @GetMapping("/logout")
     public ResponseEntity<?> logoutUser(HttpServletRequest request, HttpServletResponse response) {
         //SecurityContextHolder.clearContext();
@@ -93,7 +90,6 @@ public class AuthController {
         return ResponseEntity.ok(new MessageResponse("Kirjauduttu ulos!"));
     }
 
-    @CrossOrigin(origins = "http://lift-o-meter-front.herokuapp.com/")
     @GetMapping("/currentUser")
     @ResponseBody
     public String currentUserName(Principal principal) {
