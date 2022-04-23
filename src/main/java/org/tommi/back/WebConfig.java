@@ -12,11 +12,14 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
 
+        /*
         registry.addMapping("/**")
                 .allowedOrigins(
                         "http://localhost:3000", "http://http://lift-o-meter-front.herokuapp.com")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD")
                 .allowCredentials(true)
         ;
+
+         */
     }
 }
