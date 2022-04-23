@@ -7,7 +7,7 @@ import org.tommi.back.entities.MoveSet;
 import org.tommi.back.payloads.MoveSetPayload;
 import org.tommi.back.repositories.MoveSetRepository;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin
 @RestController
 @RequestMapping("/api/moveset")
 public class MoveSetController {

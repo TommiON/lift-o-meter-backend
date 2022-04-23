@@ -18,7 +18,7 @@ import org.tommi.back.services.CurrentUser;
 
 import java.util.*;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+//@CrossOrigin
 @RestController
 @RequestMapping("/api/workout")
 public class WorkoutController {

@@ -12,7 +12,7 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+//@CrossOrigin
 @RequestMapping("/api/users")
 @RestController
 public class UserAccountController {
