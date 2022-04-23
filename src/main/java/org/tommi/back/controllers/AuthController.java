@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.security.Principal;
 
-//@CrossOrigin
+@CrossOrigin
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
