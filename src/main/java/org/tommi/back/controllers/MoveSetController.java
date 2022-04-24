@@ -7,7 +7,7 @@ import org.tommi.back.entities.MoveSet;
 import org.tommi.back.payloads.MoveSetPayload;
 import org.tommi.back.repositories.MoveSetRepository;
 
-@CrossOrigin
+@CrossOrigin(origins = {"http://lift-o-meter-front.herokuapp.com", "https://lift-o-meter-front.herokuapp.com", "http://localhost:3000"})
 @RestController
 @RequestMapping("/api/moveset")
 public class MoveSetController {

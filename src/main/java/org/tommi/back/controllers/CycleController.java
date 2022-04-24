@@ -13,7 +13,7 @@ import org.tommi.back.services.CurrentUser;
 
 import java.util.List;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = {"http://lift-o-meter-front.herokuapp.com", "https://lift-o-meter-front.herokuapp.com", "http://localhost:3000"})
 @RequestMapping("/api/cycle")
 @RestController
 public class CycleController {

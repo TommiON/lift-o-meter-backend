@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 
-@CrossOrigin
+@CrossOrigin(origins = {"http://lift-o-meter-front.herokuapp.com", "https://lift-o-meter-front.herokuapp.com", "http://localhost:3000"})
 @RestController
 @RequestMapping("/api/test")
 public class TestController {

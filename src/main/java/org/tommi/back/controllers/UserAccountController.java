@@ -12,7 +12,7 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
-@CrossOrigin
+@CrossOrigin(origins = {"http://lift-o-meter-front.herokuapp.com", "https://lift-o-meter-front.herokuapp.com", "http://localhost:3000"})
 @RequestMapping("/api/users")
 @RestController
 public class UserAccountController {

@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.security.Principal;
 
-@CrossOrigin
+@CrossOrigin(origins = {"http://lift-o-meter-front.herokuapp.com", "https://lift-o-meter-front.herokuapp.com", "http://localhost:3000"})
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
